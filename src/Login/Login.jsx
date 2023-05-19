@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { AuthContext } from "../providers/AuthProviders/AuthProviders";
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const [focus, setFocus] = useState(false);
@@ -16,12 +17,27 @@ const Login = () => {
 
         login(email, password)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Welcome to Little Cars',
+                    text: 'Sign in successfully',
+                    showConfirmButton: true,
+                    timer: 10000
+                });
 
                 form.reset();
             })
             .catch(err => {
-                console.log(err.message);
+                // console.log(err.message);
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Please try again!',
+                    text: err.message,
+                    showConfirmButton: true,
+                    showCancelButton: true,
+                    timer: 10000
+                });
             })
     };
 

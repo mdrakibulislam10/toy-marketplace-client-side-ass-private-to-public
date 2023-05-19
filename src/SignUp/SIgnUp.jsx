@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders/AuthProviders";
 import { updateProfile } from "firebase/auth";
+import Swal from 'sweetalert2';
 
 const SIgnUp = () => {
     const [focus, setFocus] = useState(false);
@@ -21,11 +22,27 @@ const SIgnUp = () => {
         signUp(email, password)
             .then(result => {
                 // console.log(result.user);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Welcome to Little Cars',
+                    text: 'Sign up successfully',
+                    showConfirmButton: true,
+                    timer: 10000
+                });
+
                 updateUserInfo(result.user, name, image);
                 form.reset();
             })
             .catch(err => {
                 // console.log(err.message);
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Please try again!',
+                    text: err.message,
+                    showConfirmButton: true,
+                    showCancelButton: true,
+                    timer: 10000
+                });
             })
     };
 

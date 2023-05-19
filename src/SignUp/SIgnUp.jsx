@@ -28,7 +28,7 @@ const SIgnUp = () => {
                     <input onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} className={`shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline
                         ${!focus ? "border-red-500" : ""}`} id="password" required type="password" placeholder="******************" />
                     {
-                        !focus ? <p className="text-red-500 text-xs italic">Please choose a password.</p> : <p className="text-xs italic">Password al least 6 characters long.</p>
+                        !focus ? <p className="text-red-500 text-xs italic">Please choose a password.</p> : <p className="text-xs italic">Password at least 6 characters long.</p>
                     }
                 </div>
                 <div className="mb-4">

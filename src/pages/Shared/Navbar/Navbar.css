@@ -1,0 +1,13 @@
+.custom-title-style2 {
+    display: none;
+}
+
+@media only screen and (max-width: 472px) {
+    .custom-title-style2 {
+        display: block;
+    }
+
+    .custom-title-style1 {
+        display: none;
+    }
+}

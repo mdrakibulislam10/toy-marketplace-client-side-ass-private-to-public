@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { useState } from "react";
+import ActiveLink from "../../../ActiveLink/ActiveLink";
 
 const Navbar = () => {
     const [hide, setHide] = useState(false);
 
     const navMenu = <>
-        <li><Link to={"/"}>Home</Link></li>
-        <li><Link>All Toys</Link></li>
-        <li><Link>My Toys</Link></li>
-        <li><Link>Add A Toy</Link></li>
-        <li><Link>Blogs</Link></li>
+        <li><ActiveLink to={"/"}>Home</ActiveLink></li>
+        <li><ActiveLink to={"/allToys"}>All Toys</ActiveLink></li>
+        <li><ActiveLink to={"/myToys"}>My Toys</ActiveLink></li>
+        <li><ActiveLink to={"/addToys"}>Add A Toy</ActiveLink></li>
+        <li><ActiveLink to={"/blogs"}>Blogs</ActiveLink></li>
     </>
 
     return (
@@ -39,7 +40,7 @@ const Navbar = () => {
                         {navMenu}
                     </ul>
                 </div>
-                <div className="navbar-end mt-8 sm:mt-0">
+                <div className="navbar-end mt-3 sm:mt-0">
                     <div className="gap-8 px-1 flex flex-col sm:flex-row items-center justify-end">
                         {/* <img src="" alt="" /> */}
                         <p>img</p>

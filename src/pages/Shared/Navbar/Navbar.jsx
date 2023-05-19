@@ -22,7 +22,7 @@ const Navbar = () => {
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className={`menu-compact dropdown-content mt-3 p-3 shadow bg-base-100 rounded-box w-52 ${!hide ? "hidden" : "block"}`}>
+                        <ul tabIndex={0} className={`flex flex-col gap-y-3 dropdown-content mt-3 p-3 shadow bg-base-100 rounded-box w-52 ${!hide ? "hidden" : "block"}`}>
                             {navMenu}
                         </ul>
                     </div>
@@ -44,7 +44,7 @@ const Navbar = () => {
                     <div className="gap-8 px-1 flex flex-col sm:flex-row items-center justify-end">
                         {/* <img src="" alt="" /> */}
                         <p>img</p>
-                        <button className="btn bg-sky-400 py-2 px-4 rounded-lg font-bold border-0 hover:bg-sky-500">Login</button>
+                        <Link to={"/login"}><button className="btn bg-sky-400 py-2 px-4 rounded-lg font-bold border-0 hover:bg-sky-500">Login</button></Link>
                     </div>
 
                 </div>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { useContext, useState } from "react";
 import ActiveLink from "../../../ActiveLink/ActiveLink";
@@ -6,10 +6,39 @@ import { AuthContext } from "../../../providers/AuthProviders/AuthProviders";
 import { FaSignOutAlt, FaUserAlt } from "react-icons/fa";
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
+import Swal from "sweetalert2";
 
 const Navbar = () => {
     const [hide, setHide] = useState(false);
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    // logout
+    const handleLogout = () => {
+        logOut()
+            .then(result => {
+                // console.log(result.user);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Logout successfully',
+                    showConfirmButton: true,
+                    timer: 10000
+                });
+
+                navigate("/");
+            })
+            .catch(err => {
+                // console.log(err.message);
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Please try again!',
+                    text: err.message,
+                    showConfirmButton: true,
+                    showCancelButton: true,
+                    timer: 10000
+                });
+            })
+    };
 
     const navMenu = <>
         <li><ActiveLink to={"/"}>Home</ActiveLink></li>
@@ -61,7 +90,7 @@ const Navbar = () => {
                                     </a>
                                     <Tooltip anchorSelect="#clickable" clickable>
                                         <p className="mb-2 font-semibold">Name: {user?.displayName}</p>
-                                        <button className="flex items-center gap-2">
+                                        <button onClick={handleLogout} className="flex items-center gap-2">
                                             <FaSignOutAlt /> Logout
                                         </button>
                                     </Tooltip>

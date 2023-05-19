@@ -5,22 +5,32 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 const Login = () => {
     const [focus, setFocus] = useState(false);
 
+
+    const handleLogin = e => {
+        e.preventDefault();
+
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+    };
+
     return (
         <div className="w-full max-w-xs mx-auto">
             <p className="text-3xl font-semibold mb-1">Please Login!</p>
-            <form className="bg-white shadow-xl rounded px-8 py-10 mb-4">
+            <form onSubmit={handleLogin} className="bg-white shadow-xl rounded px-8 py-10 mb-4">
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
                         Email
                     </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" required placeholder="Your Email" />
+                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" required placeholder="Your Email" />
                 </div>
                 <div className="mb-6">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
                         Password
                     </label>
                     <input onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} className={`shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline
-                        ${!focus ? "border-red-500" : ""}`} id="password" required type="password" placeholder="******************" />
+                        ${!focus ? "border-red-500" : ""}`} id="password" required type="password" name="password" placeholder="******************" />
                     {
                         !focus ? <p className="text-red-500 text-xs italic">Please choose a password.</p> : <p className="text-xs italic">Password at least 6 characters long.</p>
                     }

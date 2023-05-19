@@ -20,11 +20,12 @@ const SIgnUp = () => {
         // sign up
         signUp(email, password)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
                 updateUserInfo(result.user, name, image);
+                form.reset();
             })
             .catch(err => {
-                console.log(err.message);
+                // console.log(err.message);
             })
     };
 

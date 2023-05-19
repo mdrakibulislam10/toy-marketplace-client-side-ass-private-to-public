@@ -1,16 +1,27 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ActiveLink from "../../../ActiveLink/ActiveLink";
+import { AuthContext } from "../../../providers/AuthProviders/AuthProviders";
+import { FaSignOutAlt, FaUserAlt } from "react-icons/fa";
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip } from 'react-tooltip';
 
 const Navbar = () => {
     const [hide, setHide] = useState(false);
+    const { user } = useContext(AuthContext);
 
     const navMenu = <>
         <li><ActiveLink to={"/"}>Home</ActiveLink></li>
         <li><ActiveLink to={"/allToys"}>All Toys</ActiveLink></li>
-        <li><ActiveLink to={"/myToys"}>My Toys</ActiveLink></li>
-        <li><ActiveLink to={"/addToys"}>Add A Toy</ActiveLink></li>
+        {
+            user
+            &&
+            <>
+                <li><ActiveLink to={"/myToys"}>My Toys</ActiveLink></li>
+                <li><ActiveLink to={"/addToys"}>Add A Toy</ActiveLink></li>
+            </>
+        }
         <li><ActiveLink to={"/blogs"}>Blogs</ActiveLink></li>
     </>
 
@@ -42,9 +53,21 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end mt-3 sm:mt-0">
                     <div className="gap-8 px-1 flex flex-col sm:flex-row items-center justify-end">
-                        {/* <img src="" alt="" /> */}
-                        <p>img</p>
-                        <Link to={"/login"}><button className="btn bg-sky-400 py-2 px-4 rounded-lg font-bold border-0 hover:bg-sky-500">Login</button></Link>
+                        {
+                            user
+                                ? <>
+                                    <a id="clickable" data-tooltip-place="bottom">
+                                        <img className="w-14 rounded-full" src={user?.photoURL} alt="" />
+                                    </a>
+                                    <Tooltip anchorSelect="#clickable" clickable>
+                                        <p className="mb-2 font-semibold">Name: {user?.displayName}</p>
+                                        <button className="flex items-center gap-2">
+                                            <FaSignOutAlt /> Logout
+                                        </button>
+                                    </Tooltip>
+                                </>
+                                : <Link to={"/login"}><button className="btn bg-sky-400 py-2 px-4 rounded-lg font-bold border-0 hover:bg-sky-500">Login <FaUserAlt className="ms-2" /></button></Link>
+                        }
                     </div>
 
                 </div>

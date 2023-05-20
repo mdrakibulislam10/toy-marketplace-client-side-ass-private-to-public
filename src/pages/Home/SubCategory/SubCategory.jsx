@@ -11,7 +11,7 @@ const SubCategory = () => {
                     <TabList>
                         <Tab>
                             <div className='bg-[#06b6a3] p-4 rounded text-xl font-semibold text-white'>
-                                Sports car
+                                Monster truck
                             </div>
                         </Tab>
                         <Tab>
@@ -21,7 +21,7 @@ const SubCategory = () => {
                         </Tab>
                         <Tab>
                             <div className='bg-[#01739f] p-4 rounded text-xl font-semibold text-white'>
-                                Public bus
+                                Sports car
                             </div>
                         </Tab>
                     </TabList>

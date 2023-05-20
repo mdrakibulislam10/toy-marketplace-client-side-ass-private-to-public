@@ -84,9 +84,9 @@ const Navbar = () => {
 
                     {user ? (
                         <div className="flex items-center ml-4">
-                            <a id="clickable" data-tooltip-place="bottom">
+                            <span id="clickable" data-tooltip-place="bottom">
                                 <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
-                            </a>
+                            </span>
                             <Tooltip anchorSelect="#clickable" clickable>
                                 <p className="mb-2 font-semibold">Name: {user?.displayName}</p>
                                 <button onClick={handleLogout} className="flex items-center gap-2">
@@ -97,15 +97,15 @@ const Navbar = () => {
                     ) : (
                         <Link to={"/login"}>
                             <div className="flex text-center">
-                                <button className="btn bg-white  py-2 px-4 rounded-lg font-bold border-0 ml-4 text-black hidden md:block">
+                                <button className="btn bg-white hover:bg-white py-2 px-4 rounded-lg font-bold border-0 ml-4 text-black hidden md:block">
                                     <span className="flex items-center">Login <FaUserAlt className="ms-2" /></span>
                                 </button>
 
-                                <a id="clickable" data-tooltip-place="bottom">
-                                    <button className="btn bg-white py-2 px-4 rounded-full font-bold border-0 ml-4 text-black md:hidden">
+                                <span id="clickable" data-tooltip-place="bottom">
+                                    <button className="btn bg-white hover:bg-white py-2 px-4 rounded-full font-bold border-0 ml-4 text-black md:hidden">
                                         <FaUserAlt />
                                     </button>
-                                </a>
+                                </span>
                                 <Tooltip anchorSelect="#clickable" clickable>
                                     <p>Login</p>
                                 </Tooltip>

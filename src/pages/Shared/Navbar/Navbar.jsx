@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import "./Navbar.css";
 import { useContext, useState } from "react";
 import ActiveLink from "../../../ActiveLink/ActiveLink";
 import { AuthContext } from "../../../providers/AuthProviders/AuthProviders";
@@ -7,6 +6,7 @@ import { FaSignOutAlt, FaUserAlt } from "react-icons/fa";
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
 import Swal from "sweetalert2";
+import "./Navbar.css";
 
 const Navbar = () => {
     const [hide, setHide] = useState(false);
@@ -17,7 +17,6 @@ const Navbar = () => {
     const handleLogout = () => {
         logOut()
             .then(result => {
-                // console.log(result.user);
                 Swal.fire({
                     icon: 'success',
                     title: 'Logout successfully',
@@ -28,7 +27,6 @@ const Navbar = () => {
                 navigate("/");
             })
             .catch(err => {
-                // console.log(err.message);
                 Swal.fire({
                     icon: 'warning',
                     title: 'Please try again!',
@@ -40,72 +38,83 @@ const Navbar = () => {
             })
     };
 
-    const navMenu = <>
-        <li><ActiveLink to={"/"}>Home</ActiveLink></li>
-        <li><ActiveLink to={"/allToys"}>All Toys</ActiveLink></li>
-        {
-            user
-            &&
-            <>
-                <li><ActiveLink to={"/myToys"}>My Toys</ActiveLink></li>
-                <li><ActiveLink to={"/addToys"}>Add A Toy</ActiveLink></li>
-            </>
-        }
-        <li><ActiveLink to={"/blogs"}>Blogs</ActiveLink></li>
-    </>
+    const navMenu = (
+        <>
+            <li><ActiveLink to={"/"}>Home</ActiveLink></li>
+            <li><ActiveLink to={"/allToys"}>All Toys</ActiveLink></li>
+            {user && (
+                <>
+                    <li><ActiveLink to={"/myToys"}>My Toys</ActiveLink></li>
+                    <li><ActiveLink to={"/addToys"}>Add A Toy</ActiveLink></li>
+                </>
+            )}
+            <li><ActiveLink to={"/blogs"}>Blogs</ActiveLink></li>
+        </>
+    );
 
     return (
-        <>
-            <div className="navbar bg-base-100 px-0 flex items-start sm:items-center">
-                <div className="navbar-start flex flex-wrap">
-                    <div className="dropdown ms-2" onClick={() => setHide(!hide)}>
-                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+        <div className="navbar-wrapper mb-8 lg:px-12 py-1 px-2 bg-[#ee8eb4]">
+            <div className="navbar-container flex items-center justify-between">
+                <div className="navbar-start flex items-center">
+                    <div className="dropdown sm:hidden" onClick={() => setHide(!hide)}>
+                        <label tabIndex={0} className="btn btn-ghost">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+                            </svg>
                         </label>
-                        <ul tabIndex={0} className={`flex flex-col gap-y-3 dropdown-content mt-3 p-3 shadow bg-base-100 rounded-box w-52 ${!hide ? "hidden" : "block"}`}>
+                        <ul tabIndex={0} className={`dropdown-content p-3 shadow bg-base-100 rounded-box w-52 ${hide ? "block" : "hidden"}`}>
                             {navMenu}
                         </ul>
                     </div>
 
-                    <Link to={"/"}>
-                        <img className="w-36" src="https://i.ibb.co/vmTPGCM/cute-cat-driving-car-cartoon-character-animal-transportation-isolated-138676-3153-1-removebg-preview.png" alt="" />
-                    </Link>
-
-                    <p className="text-4xl font-bold text-pink-500 custom-title-style1">
-                        LITTLE CARS
-                    </p>
+                    <div className="flex items-center">
+                        <Link className="w-20 sm:w-28" to={"/"}>
+                            <img className="" src="https://i.ibb.co/vmTPGCM/cute-cat-driving-car-cartoon-character-animal-transportation-isolated-138676-3153-1-removebg-preview.png" alt="" />
+                        </Link>
+                        <p className="text-xl md:text-4xl font-bold text-white ml-2 sm:ml-4">
+                            LITTLE CARS
+                        </p>
+                    </div>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="flex gap-8 px-1 font-bold">
+
+                <div className="navbar-end flex items-center">
+                    <ul className="hidden sm:flex gap-6 font-bold">
                         {navMenu}
                     </ul>
-                </div>
-                <div className="navbar-end mt-3 sm:mt-0">
-                    <div className="gap-8 px-1 flex flex-col sm:flex-row items-center justify-end">
-                        {
-                            user
-                                ? <>
-                                    <a id="clickable" data-tooltip-place="bottom">
-                                        <img className="w-14 rounded-full" src={user?.photoURL} alt="" />
-                                    </a>
-                                    <Tooltip anchorSelect="#clickable" clickable>
-                                        <p className="mb-2 font-semibold">Name: {user?.displayName}</p>
-                                        <button onClick={handleLogout} className="flex items-center gap-2">
-                                            <FaSignOutAlt /> Logout
-                                        </button>
-                                    </Tooltip>
-                                </>
-                                : <Link to={"/login"}><button className="btn bg-sky-400 py-2 px-4 rounded-lg font-bold border-0 hover:bg-sky-500">Login <FaUserAlt className="ms-2" /></button></Link>
-                        }
-                    </div>
 
+                    {user ? (
+                        <div className="flex items-center ml-4">
+                            <a id="clickable" data-tooltip-place="bottom">
+                                <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
+                            </a>
+                            <Tooltip anchorSelect="#clickable" clickable>
+                                <p className="mb-2 font-semibold">Name: {user?.displayName}</p>
+                                <button onClick={handleLogout} className="flex items-center gap-2">
+                                    <FaSignOutAlt /> Logout
+                                </button>
+                            </Tooltip>
+                        </div>
+                    ) : (
+                        <Link to={"/login"}>
+                            <div className="flex text-center">
+                                <button className="btn bg-white  py-2 px-4 rounded-lg font-bold border-0 ml-4 text-black hidden md:block">
+                                    <span className="flex items-center">Login <FaUserAlt className="ms-2" /></span>
+                                </button>
+
+                                <a id="clickable" data-tooltip-place="bottom">
+                                    <button className="btn bg-white py-2 px-4 rounded-full font-bold border-0 ml-4 text-black md:hidden">
+                                        <FaUserAlt />
+                                    </button>
+                                </a>
+                                <Tooltip anchorSelect="#clickable" clickable>
+                                    <p>Login</p>
+                                </Tooltip>
+                            </div>
+                        </Link>
+                    )}
                 </div>
             </div>
-
-            <p className="text-4xl font-bold text-pink-500 custom-title-style2">
-                LITTLE CARS
-            </p>
-        </>
+        </div>
     );
 };
 

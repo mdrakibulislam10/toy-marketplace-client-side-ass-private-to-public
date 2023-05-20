@@ -6,7 +6,7 @@ const CategoryToyCard = ({ toy }) => {
 
     return (
         <>
-            <div className="w-full max-w-s border bg-blue-200 shadow-xl rounded-lg">
+            <div className="w-full max-w-s border bg-gray-100 shadow-xl rounded-lg">
                 <div className="p-3 rounded-lg">
                     <img className="h-60 w-full rounded-lg" src={image} alt="" />
                 </div>

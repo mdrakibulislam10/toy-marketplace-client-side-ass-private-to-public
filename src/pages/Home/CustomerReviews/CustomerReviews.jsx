@@ -1,8 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProviders/AuthProviders";
+import ReviewCard from "./ReviewCard/ReviewCard";
 
 const CustomerReviews = () => {
     const { user } = useContext(AuthContext);
+    const [reviews, setReviews] = useState([]);
 
     const handleReviewPost = e => {
         e.preventDefault();
@@ -16,6 +18,7 @@ const CustomerReviews = () => {
             reviewText,
         };
 
+        // post reviews data
         fetch("https://toy-marketplace-server-side-six.vercel.app/reviews", {
             method: "POST",
             headers: {
@@ -29,10 +32,17 @@ const CustomerReviews = () => {
             })
     };
 
+    // load reviews data
+    useEffect(() => {
+        fetch("https://toy-marketplace-server-side-six.vercel.app/reviews")
+            .then(res => res.json())
+            .then(data => setReviews(data))
+    }, [reviews]);
+
     return (
         <section className="lg:mx-16">
             <h2 className="text-center mb-8 text-3xl font-semibold"><span className=" border-b-4 pb-1 border-orange-600">Customer Reviews</span></h2>
-            <div className="bg-lime-300 px-2 py-4 rounded-md">
+            <div className="bg-lime-200 px-2 py-4 rounded-md">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 md:gap-6">
                     <div className="flex items-center justify-center">
                         <div className="text-center">
@@ -59,15 +69,23 @@ const CustomerReviews = () => {
                                 required
                             ></textarea>
 
-                            <input className="btn bg-orange-700 border-0 hover:bg-orange-600 mt-2" type="submit" value="Post Review" />
+                            <input className="btn bg-orange-600 border-0 hover:bg-orange-700 mt-2" type="submit" value="Post Review" />
                         </div>
 
                     </form>
                 </div>
             </div>
 
-            <div>
-
+            <h2 className="mt-8 mb-4 text-3xl font-semibold border-yellow-600 ps-2 border-l-4">View Reviews</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:mx-5 lg:mx-10">
+                {
+                    reviews.map(review => (
+                        <ReviewCard
+                            key={review._id}
+                            review={review}
+                        />
+                    ))
+                }
             </div>
         </section>
     );

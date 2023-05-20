@@ -40,7 +40,7 @@ const CustomerReviews = () => {
     }, [reviews]);
 
     return (
-        <section className="lg:mx-16">
+        <section className="lg:mx-16 mb-16">
             <h2 className="text-center mb-8 text-3xl font-semibold"><span className=" border-b-4 pb-1 border-orange-600">Customer Reviews</span></h2>
             <div className="bg-lime-200 px-2 py-4 rounded-md">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 md:gap-6">

@@ -6,6 +6,8 @@ import Login from "../Login/Login";
 import SIgnUp from "../SignUp/SIgnUp";
 import AddToys from "../pages/AddToys/AddToys";
 import AllToys from "../pages/AllToys/AllToys";
+import MyToys from "../pages/MyToys/MyToys";
+import Blogs from "../pages/Blogs/Blogs";
 
 const router = createBrowserRouter([
     {
@@ -31,7 +33,16 @@ const router = createBrowserRouter([
             },
             {
                 path: "/allToys",
-                element: <AllToys />
+                element: <AllToys />,
+                loader: async () => fetch("https://toy-marketplace-server-side-six.vercel.app/toys?limit=20"),
+            },
+            {
+                path: "/myToys",
+                element: <MyToys />
+            },
+            {
+                path: "/blogs",
+                element: <Blogs />
             }
         ]
     },

@@ -6,7 +6,6 @@ import { FaSignOutAlt, FaUserAlt } from "react-icons/fa";
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
 import Swal from "sweetalert2";
-import "./Navbar.css";
 
 const Navbar = () => {
     const [hide, setHide] = useState(false);
@@ -53,7 +52,7 @@ const Navbar = () => {
     );
 
     return (
-        <div className="navbar-wrapper mb-8 lg:px-12 py-1 px-2 bg-[#ee8eb4]">
+        <div className="navbar-wrapper mb-6 lg:px-12 py-1 px-2 bg-[#ee8eb4]">
             <div className="navbar-container flex items-center justify-between">
                 <div className="navbar-start flex items-center">
                     <div className="dropdown sm:hidden" onClick={() => setHide(!hide)}>
@@ -62,7 +61,7 @@ const Navbar = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
                             </svg>
                         </label>
-                        <ul tabIndex={0} className={`dropdown-content p-3 shadow bg-base-100 rounded-box w-52 ${hide ? "block" : "hidden"}`}>
+                        <ul tabIndex={0} className={`font-semibold flex flex-col gap-y-2 dropdown-content p-3 shadow bg-base-100 rounded-box w-52 ${hide ? "block" : "hidden"}`}>
                             {navMenu}
                         </ul>
                     </div>
@@ -84,7 +83,7 @@ const Navbar = () => {
 
                     {user ? (
                         <div className="flex items-center ml-4">
-                            <span id="clickable" data-tooltip-place="bottom">
+                            <span id="clickable" data-tooltip-place="left">
                                 <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
                             </span>
                             <Tooltip anchorSelect="#clickable" clickable>

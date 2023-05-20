@@ -1,4 +1,5 @@
 import Banner from "../Banner/Banner";
+import OurProducts from "../OurProducts/OurProducts";
 import PhotoGallery from "../PhotoGallery/PhotoGallery";
 import SubCategory from "../SubCategory/SubCategory";
 
@@ -8,6 +9,7 @@ const Home = () => {
             <Banner />
             <PhotoGallery />
             <SubCategory />
+            <OurProducts/>
         </div>
     );
 };

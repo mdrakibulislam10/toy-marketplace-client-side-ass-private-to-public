@@ -10,22 +10,23 @@ const SubCategory = () => {
                 <Tabs>
                     <TabList>
                         <Tab>
-                            <div className='bg-[#06b6a3] p-2 rounded text-xl font-semibold text-white'>
+                            <div className='bg-[#06b6a3] p-4 rounded text-xl font-semibold text-white'>
                                 Sports car
                             </div>
                         </Tab>
                         <Tab>
-                            <div className='bg-[#72b32d] p-2 rounded text-xl font-semibold text-white'>
+                            <div className='bg-[#72b32d] p-4 rounded text-xl font-semibold text-white'>
                                 Police car
                             </div>
                         </Tab>
                         <Tab>
-                            <div className='bg-[#01739f] p-2 rounded text-xl font-semibold text-white'>
+                            <div className='bg-[#01739f] p-4 rounded text-xl font-semibold text-white'>
                                 Public bus
                             </div>
                         </Tab>
                     </TabList>
 
+                    {/* map and return */}
                     <TabPanel>
                         <h2>Any content 1</h2>
                     </TabPanel>

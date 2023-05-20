@@ -10,7 +10,7 @@ const PhotoGallery = () => {
 
     return (
         <section className="mb-16">
-            <h2 className="text-center mb-8 text-3xl font-semibold"><span className=" border-b-4 border-orange-600">Photo Gallery</span></h2>
+            <h2 className="text-center mb-8 text-3xl font-semibold"><span className="pb-1 border-b-4 border-orange-600">Photo Gallery</span></h2>
             <div className="flex flex-wrap justify-center gap-4">
                 {
                     images.map((img, i) =>

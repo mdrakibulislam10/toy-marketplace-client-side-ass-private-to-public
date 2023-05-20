@@ -6,7 +6,7 @@ import { FaCar, FaMotorcycle, FaTruckMonster } from 'react-icons/fa';
 
 const SubCategory = () => {
     const [categoryToys, setCategoryToys] = useState([]);
-    const [subCategoryName, setSubCategoryName] = useState("monster-truck");
+    const [subCategoryName, setSubCategoryName] = useState("Monster Truck");
 
     useEffect(() => {
         const loadByCategory = async () => {
@@ -26,19 +26,19 @@ const SubCategory = () => {
                 <Tabs>
                     <TabList>
                         <Tab>
-                            <div onClick={() => setSubCategoryName("monster-truck")} className='bg-[#06b6a3] p-4 rounded text-xl font-semibold text-white flex flex-col items-center'>
+                            <div onClick={() => setSubCategoryName("Monster Truck")} className='bg-[#06b6a3] p-4 rounded text-xl font-semibold text-white flex flex-col items-center'>
                                 Monster truck
                                 <FaTruckMonster className='text-4xl mt-2' />
                             </div>
                         </Tab>
                         <Tab>
-                            <div onClick={() => setSubCategoryName("motorcycle")} className='bg-[#72b32d] p-4 rounded text-xl font-semibold text-white flex flex-col items-center'>
+                            <div onClick={() => setSubCategoryName("Motorcycle")} className='bg-[#72b32d] p-4 rounded text-xl font-semibold text-white flex flex-col items-center'>
                                 Motorcycle
                                 <FaMotorcycle className='text-4xl mt-2' />
                             </div>
                         </Tab>
                         <Tab>
-                            <div onClick={() => setSubCategoryName("sports-car")} className='bg-[#01739f] p-4 rounded text-xl font-semibold text-white flex flex-col items-center'>
+                            <div onClick={() => setSubCategoryName("Sports Car")} className='bg-[#01739f] p-4 rounded text-xl font-semibold text-white flex flex-col items-center'>
                                 Sports car
                                 <FaCar className='text-4xl mt-2' />
                             </div>
@@ -48,7 +48,7 @@ const SubCategory = () => {
 
                     <TabPanel>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-12 mt-4">
-                            {subCategoryName === "monster-truck" &&
+                            {subCategoryName === "Monster Truck" &&
                                 categoryToys.map(toy => (
                                     <CategoryToyCard
                                         key={toy._id}
@@ -61,7 +61,7 @@ const SubCategory = () => {
 
                     <TabPanel>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-12 mt-4">
-                            {subCategoryName === "motorcycle" &&
+                            {subCategoryName === "Motorcycle" &&
                                 categoryToys.map(toy => (
                                     <CategoryToyCard
                                         key={toy._id}
@@ -74,7 +74,7 @@ const SubCategory = () => {
 
                     <TabPanel>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-12 mt-4">
-                            {subCategoryName === "sports-car" &&
+                            {subCategoryName === "Sports Car" &&
                                 categoryToys.map(toy => (
                                     <CategoryToyCard
                                         key={toy._id}

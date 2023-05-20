@@ -148,7 +148,7 @@ const AddToys = () => {
                             >
                                 {
                                     subCategoryOptions.map((subCategory, i) => (
-                                        <option key={i} value={subCategory.toLowerCase().split(' ').join('-')}>
+                                        <option key={i} value={subCategory}>
                                             {subCategory}
                                         </option>
                                     ))

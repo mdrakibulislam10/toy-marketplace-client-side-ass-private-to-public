@@ -8,16 +8,16 @@ const AddToys = () => {
         e.preventDefault();
         const form = e.target;
 
-        const image = form.image.value;
-        const toyName = form.toyName.value;
-        const sellerName = form.sellerName.value;
+        const image = form.image?.value;
+        const toyName = form.toyName?.value;
+        const sellerName = form.sellerName?.value;
         // const sellerName = user?.displayName;
-        const sellerEmail = form.email.value;
-        const subCategory = form.subCategorySelector.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
-        const quantity = form.quantity.value;
-        const description = form.description.value;
+        const sellerEmail = form.email?.value;
+        const subCategory = form.subCategorySelector?.value;
+        const price = form.price?.value;
+        const rating = form.rating?.value;
+        const quantity = form.quantity?.value;
+        const description = form.description?.value;
 
         const toyInfo = {
             image,
@@ -48,6 +48,7 @@ const AddToys = () => {
         "Sports Car",
         "Truck",
         "SUV",
+        "Bus",
         "Private Car",
         "Mini Fire Truck",
         "Mini Police Car",
@@ -147,7 +148,7 @@ const AddToys = () => {
                             >
                                 {
                                     subCategoryOptions.map((subCategory, i) => (
-                                        <option key={i} value={subCategory}>
+                                        <option key={i} value={subCategory.toLowerCase().split(' ').join('-')}>
                                             {subCategory}
                                         </option>
                                     ))

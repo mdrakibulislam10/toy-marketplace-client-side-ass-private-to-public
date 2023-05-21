@@ -1,9 +1,8 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProviders/AuthProviders";
 import { Navigate, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import ReactLoading from 'react-loading';
-
 
 const PrivateRoute = ({ children }) => {
     const { user, spinner } = useContext(AuthContext);

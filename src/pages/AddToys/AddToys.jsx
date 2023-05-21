@@ -58,8 +58,8 @@ const AddToys = () => {
     ];
 
     return (
-        <div className="mb-16">
-            <form onSubmit={handleAddToys} className="w-full max-w-3xl mx-auto">
+        <div className="my-16">
+            <form onSubmit={handleAddToys} className="w-full max-w-3xl mx-auto border-2 p-3 rounded border-gray-500">
                 <div className="flex flex-wrap -mx-3 mb-6">
                     <div className="w-full md:w-1/2 px-3">
                         <label
@@ -241,7 +241,7 @@ const AddToys = () => {
                     <input
                         className="btn btn-accent w-full font-bold text-lg"
                         type="submit"
-                        value="Post Toys"
+                        value="Post Toy"
                     />
                 </div>
             </form>

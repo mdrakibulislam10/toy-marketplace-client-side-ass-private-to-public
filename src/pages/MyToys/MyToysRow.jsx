@@ -1,4 +1,5 @@
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const MyToysRow = ({ toy }) => {
     const { _id, image, toyName, sellerName, subCategory, price, quantity } = toy;
@@ -30,7 +31,7 @@ const MyToysRow = ({ toy }) => {
 
             <td>
                 <div className="font-bold flex gap-4 text-xl">
-                    <button title="Update"><FaEdit /></button>
+                    <Link to={`/editToy/${_id}`}><button title="Update"><FaEdit /></button></Link>
                     <button title="Delete"><FaTrashAlt /></button>
                 </div>
             </td>

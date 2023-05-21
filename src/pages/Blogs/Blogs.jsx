@@ -1,5 +1,8 @@
+import useTitle from "../../hooks/useTitle";
 
 const Blogs = () => {
+    useTitle("Blogs");
+
     return (
         <section className="lg:w-3/4 mx-auto my-12">
             <article>

@@ -3,12 +3,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { AuthContext } from "../providers/AuthProviders/AuthProviders";
 import Swal from 'sweetalert2';
+import useTitle from "../hooks/useTitle";
 
 const Login = () => {
     const [focus, setFocus] = useState(false);
     const { login } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
+    useTitle("Login");
 
     const from = location.state?.from?.pathname || "/";
 

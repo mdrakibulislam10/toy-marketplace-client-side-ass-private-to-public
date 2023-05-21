@@ -2,11 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders/AuthProviders";
 import MyToysRow from "./MyToysRow";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 const MyToys = () => {
     const { user } = useContext(AuthContext);
     const [toys, setToys] = useState([]);
     const [sortType, setSortType] = useState("");
+    useTitle("My Toys")
 
     // load specific data by email
     useEffect(() => {
@@ -14,8 +16,6 @@ const MyToys = () => {
             .then(res => res.json())
             .then(data => setToys(data))
     }, [user?.email, sortType]);
-
-    console.log(sortType);
 
     // delete toy
     const handleDelete = _id => {

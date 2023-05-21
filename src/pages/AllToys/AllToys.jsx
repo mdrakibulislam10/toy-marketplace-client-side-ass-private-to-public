@@ -1,10 +1,12 @@
 import { useLoaderData } from 'react-router-dom';
 import ToysRow from './ToysRow';
 import { useState } from 'react';
+import useTitle from '../../hooks/useTitle';
 
 const AllToys = () => {
     const allToys = useLoaderData();
     const [toys, setToys] = useState(allToys);
+    useTitle("All Toys")
 
     const handleSearch = e => {
         e.preventDefault();

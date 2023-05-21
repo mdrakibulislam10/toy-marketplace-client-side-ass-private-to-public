@@ -10,7 +10,7 @@ const AllToys = () => {
         e.preventDefault();
 
         const searchText = e.target.search.value;
-        console.log(searchText);
+        // console.log(searchText);
 
         fetch(`https://toy-marketplace-server-side-six.vercel.app/toysSearch?search=${searchText}`)
             .then(res => res.json())

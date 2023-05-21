@@ -52,7 +52,7 @@ const Navbar = () => {
     );
 
     return (
-        <div className="navbar-wrapper mb-6 lg:px-12 py-1 px-2 bg-[#ee8eb4]">
+        <div className="navbar-wrapper mb-6 lg:px-12 py-1 px-2 bg-[#ee8eb4] rounded">
             <div className="navbar-container flex items-center justify-between">
                 <div className="navbar-start flex items-center">
                     <div className="dropdown sm:hidden" onClick={() => setHide(!hide)}>

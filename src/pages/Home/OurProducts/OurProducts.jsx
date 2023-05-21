@@ -20,7 +20,7 @@ const OurProducts = () => {
                             <img className="h-36 sm:h-48 w-52 sm:w-80 mx-2 rounded-lg" src="https://khelaghortoys.com/wp-content/uploads/2022/02/81bDGSYdgaL.jpg" alt="" />
                         </Marquee>
 
-                        <Link to={"/allToys"}><button className="btn mt-4 bg-orange-600 hover:bg-sky-600 border-0">View Our All Toys</button></Link>
+                        <Link to={"/allToys"}><button className="btn mt-4 bg-sky-700 hover:bg-sky-600 border-0">View Our All Toys</button></Link>
                     </div>
                 </div>
 

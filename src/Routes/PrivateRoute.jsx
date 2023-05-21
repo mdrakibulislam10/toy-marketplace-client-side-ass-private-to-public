@@ -19,7 +19,7 @@ const PrivateRoute = ({ children }) => {
 
     Swal.fire({
         icon: 'warning',
-        text: 'You have to log in first to view details!',
+        text: 'Please log in to continue!',
         showConfirmButton: true,
         timer: 10000
     });

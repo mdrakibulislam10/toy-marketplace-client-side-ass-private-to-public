@@ -6,11 +6,28 @@ const MyToys = () => {
     const { user } = useContext(AuthContext);
     const [toys, setToys] = useState([]);
 
+    // load specific data by email
     useEffect(() => {
         fetch(`https://toy-marketplace-server-side-six.vercel.app/usersToys?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setToys(data))
     }, [user?.email]);
+
+    // delete toy
+    const handleDelete = _id => {
+        fetch(`https://toy-marketplace-server-side-six.vercel.app/deleteToy/${_id}`, {
+            method: "DELETE",
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.deletedCount) {
+
+                    const restToys = toys.filter(toy => toy._id !== _id);
+                    setToys(restToys);
+                }
+            })
+    };
 
     return (
         <section className="lg:mx-4">
@@ -34,6 +51,7 @@ const MyToys = () => {
                                 <MyToysRow
                                     key={toy._id}
                                     toy={toy}
+                                    handleDelete={handleDelete}
                                 />
                             ))
                         }

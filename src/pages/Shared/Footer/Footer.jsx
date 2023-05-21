@@ -42,6 +42,12 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
+            <div>
+                <span className="footer-title">Contact us</span>
+                <span>Cell: 017........</span>
+                <span>Email: example@gmail.com</span>
+                <span>Address: London, UK</span>
+            </div>
         </footer>
     );
 };

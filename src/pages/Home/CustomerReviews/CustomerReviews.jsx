@@ -2,10 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProviders/AuthProviders";
 import ReviewCard from "./ReviewCard/ReviewCard";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const CustomerReviews = () => {
     const { user } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
+    const navigate = useNavigate();
 
     const handleReviewPost = e => {
         e.preventDefault();
@@ -18,6 +20,17 @@ const CustomerReviews = () => {
             reviewerEmail: user?.email,
             reviewText,
         };
+
+        if (!user) {
+            Swal.fire({
+                icon: 'warning',
+                text: 'Please log in to continue!',
+                showConfirmButton: true,
+                timer: 10000
+            });
+            navigate("/login", { replace: true });
+            return;
+        }
 
         // post reviews data
         fetch("https://toy-marketplace-server-side-six.vercel.app/reviews", {

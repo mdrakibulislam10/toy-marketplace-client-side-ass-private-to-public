@@ -15,7 +15,7 @@ const PhotoGallery = () => {
             <div className="flex flex-wrap justify-center gap-4">
                 {
                     images.map((img, i) =>
-                        <img data-aos="zoom-in" className="w-96 h-60 rounded hover:scale-105" key={i} src={img} alt="" />
+                        <img data-aos="zoom-in" className="w-96 h-60 rounded" key={i} src={img} alt="" />
                     )
                 }
             </div>

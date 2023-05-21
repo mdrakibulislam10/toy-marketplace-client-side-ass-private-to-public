@@ -6,13 +6,16 @@ import Swal from "sweetalert2";
 const MyToys = () => {
     const { user } = useContext(AuthContext);
     const [toys, setToys] = useState([]);
+    const [sortType, setSortType] = useState("");
 
     // load specific data by email
     useEffect(() => {
-        fetch(`https://toy-marketplace-server-side-six.vercel.app/usersToys?email=${user?.email}`)
+        fetch(`https://toy-marketplace-server-side-six.vercel.app/usersToys?email=${user?.email}&sortType=${sortType}`)
             .then(res => res.json())
             .then(data => setToys(data))
-    }, [user?.email]);
+    }, [user?.email, sortType]);
+
+    console.log(sortType);
 
     // delete toy
     const handleDelete = _id => {
@@ -54,6 +57,17 @@ const MyToys = () => {
 
     return (
         <section className="lg:mx-4">
+            <div className="flex justify-center">
+                <select
+                    className="select select-bordered w-full max-w-xs mb-5"
+                    defaultValue="Sort by price"
+                    onChange={(e) => setSortType(e.target.value)}
+                >
+                    <option disabled>Sort by price</option>
+                    <option value="ascending">Ascending</option>
+                    <option value="descending">Descending</option>
+                </select>
+            </div>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {/* head */}

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
     return (
-        <div className="mb-16">
+        <section data-aos="fade-up" data-aos-duration="1000" className="mb-16">
             <div className="hero rounded md:h-screen" style={{ opacity: "0.9", backgroundImage: `url("https://i.ibb.co/vmFMJs7/istockphoto-544653226-612x612.png")` }}>
                 <div className=""></div>
                 <div className="hero-content text-center text-neutral-content">
@@ -13,7 +13,7 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

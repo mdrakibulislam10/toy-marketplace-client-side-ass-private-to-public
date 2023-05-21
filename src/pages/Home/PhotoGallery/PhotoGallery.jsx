@@ -1,5 +1,6 @@
 
 const PhotoGallery = () => {
+
     const images = [
         "https://img.freepik.com/free-photo/distracted-girl-with-toys-looking-away_23-2147663716.jpg?w=996&t=st=1684544068~exp=1684544668~hmac=fab1ad6695c22349d5c1258b252eb68956a0adefb3d6d3a52915999bdcc3f058",
         "https://img.freepik.com/free-photo/side-view-little-kid-playing-with-car_23-2149307029.jpg?w=996&t=st=1684544707~exp=1684545307~hmac=6dd33821320101422489575dedb134d9990d5dd82ebd8b4b89fdb9298a3d33b2",
@@ -10,11 +11,11 @@ const PhotoGallery = () => {
 
     return (
         <section className="mb-16">
-            <h2 className="text-center mb-8 text-3xl font-semibold"><span className="pb-1 border-b-4 border-orange-600">Photo Gallery</span></h2>
+            <h2 className="text-center mb-8 text-2xl lg:text-3xl font-semibold"><span className="border-b-4 sm:pb-1 border-orange-600">Photo Gallery</span></h2>
             <div className="flex flex-wrap justify-center gap-4">
                 {
                     images.map((img, i) =>
-                        <img className="w-96 h-60 rounded hover:scale-105" key={i} src={img} alt="" />
+                        <img data-aos="zoom-in" className="w-96 h-60 rounded hover:scale-105" key={i} src={img} alt="" />
                     )
                 }
             </div>

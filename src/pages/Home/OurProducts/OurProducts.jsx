@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const OurProducts = () => {
     return (
-        <div className="mb-16">
-            <h2 className="text-center mb-8 text-3xl font-semibold"><span className=" border-b-4 pb-1 border-orange-600">About Our Products</span></h2>
+        <section className="mb-16">
+            <h2 className="text-center mb-8 text-2xl lg:text-3xl font-semibold"><span className=" border-b-4 sm:pb-1 border-orange-600">About Our Products</span></h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-1 lg:gap-0">
 
@@ -26,7 +26,7 @@ const OurProducts = () => {
 
                 <img className="w-full h-full order-1 lg:order-2" src="https://montessorimamatoys.com/cdn/shop/collections/montessori_mama_ages_5-8_image.jpg?v=1669090467" alt="" />
             </div>
-        </div>
+        </section>
     );
 };
 

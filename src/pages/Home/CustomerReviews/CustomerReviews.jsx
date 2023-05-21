@@ -50,7 +50,7 @@ const CustomerReviews = () => {
 
     return (
         <section className="lg:mx-16">
-            <h2 className="text-center mb-8 text-3xl font-semibold"><span className=" border-b-4 pb-1 border-orange-600">Customer Reviews</span></h2>
+            <h2 className="text-center mb-8 text-2xl lg:text-3xl font-semibold"><span className=" border-b-4 sm:pb-1 border-orange-600">Customer Reviews</span></h2>
             <div className="bg-gray-100 shadow px-2 py-4 rounded-md">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 md:gap-6">
                     <div className="flex items-center justify-center">
@@ -85,7 +85,7 @@ const CustomerReviews = () => {
                 </div>
             </div>
 
-            <h2 className="mt-8 mb-4 text-3xl font-semibold border-yellow-600 ps-2 border-l-4">View Reviews</h2>
+            <h2 className="mt-8 mb-4 text-2xl lg:text-3xl font-semibold border-yellow-600 ps-2 border-l-4">View Reviews</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:mx-5 lg:mx-10">
                 {
                     reviews.map(review => (

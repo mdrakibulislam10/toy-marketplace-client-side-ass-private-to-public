@@ -20,7 +20,7 @@ const SubCategory = () => {
 
     return (
         <section className="mb-16 lg:mx-32">
-            <h2 className="text-center mb-8 text-3xl font-semibold"><span className=" border-b-4 pb-1 border-orange-600">Sub Category</span></h2>
+            <h2 className="text-center mb-8 text-2xl lg:text-3xl font-semibold"><span className="border-b-4 sm:pb-1 border-orange-600">Sub Category</span></h2>
 
             <div className='text-center'>
                 <Tabs>

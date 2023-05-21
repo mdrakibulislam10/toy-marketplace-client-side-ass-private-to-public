@@ -2,9 +2,14 @@ import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../providers/AuthProviders/AuthProviders";
 import Swal from 'sweetalert2';
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
     const { signInWithGoogle } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || "/";
 
     const handleGoogleSIgnIn = () => {
         signInWithGoogle()
@@ -17,6 +22,7 @@ const SocialLogin = () => {
                     showConfirmButton: true,
                     timer: 10000 // automatically close after 10 seconds
                 });
+                navigate(from, { replace: true });
             })
             .catch(err => {
                 // console.log(err.message);

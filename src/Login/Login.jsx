@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { AuthContext } from "../providers/AuthProviders/AuthProviders";
 import Swal from 'sweetalert2';
@@ -7,6 +7,10 @@ import Swal from 'sweetalert2';
 const Login = () => {
     const [focus, setFocus] = useState(false);
     const { login } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || "/";
 
     const handleLogin = e => {
         e.preventDefault();
@@ -25,7 +29,7 @@ const Login = () => {
                     showConfirmButton: true,
                     timer: 10000
                 });
-
+                navigate(from, { replace: true });
                 form.reset();
             })
             .catch(err => {

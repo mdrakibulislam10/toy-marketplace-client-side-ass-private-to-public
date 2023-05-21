@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders/AuthProviders";
 import { updateProfile } from "firebase/auth";
 import Swal from 'sweetalert2';
@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 const SIgnUp = () => {
     const [focus, setFocus] = useState(false);
     const { signUp } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleSignUp = e => {
         e.preventDefault();
@@ -31,6 +32,7 @@ const SIgnUp = () => {
                 });
 
                 updateUserInfo(result.user, name, image);
+                navigate("/", { replace: true });
                 form.reset();
             })
             .catch(err => {

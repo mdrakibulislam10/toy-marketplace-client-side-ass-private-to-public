@@ -23,7 +23,7 @@ const Navbar = () => {
                     timer: 10000
                 });
 
-                navigate("/");
+                navigate("/", { replace: true });
             })
             .catch(err => {
                 Swal.fire({
